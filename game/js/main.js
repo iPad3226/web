@@ -349,7 +349,24 @@ else if (x>spikeX[i]&&spikeX[i]+hitboxX>x&&y>spikeY[i]-hitboxX&&spikeY[i]+hitbox
 	
 /*enemy*/
 for (var i=0;i<enemyY.length;i++) {
-ctx.drawImage( mapchip, 192, 0, 32, 32, enemyX[i], enemyY[i], 32, 32 );
+enemyjump[i]=true
+for (var i=0;i<blocksY.length;i++) {
+	if (
+	enemyY[i]+32.001>blocksY[i]&&
+	enemyY[i]<blocksY[i]&&
+	enemyX[i]<blocksX[i]+30&&
+	enemyX[i]>blocksX[i]-30
+	) {ey=blocksY[i]-32;enemyjump[i]=false;evy=0}
+	else if (
+	enemyY[i]>blocksY[i]&&
+	enemyY[i]-32<blocksY[i]&&
+	enemyX[i]<blocksX[i]+30&&
+	enemyX[i]>blocksX[i]-30
+	) {enemyY[i]=blocksY[i]+32;evy=0}
+if (enemyX[i]>blocksX[i]-32&&blocksX[i]>enemyX[i]&&enemyY[i]>blocksY[i]-32&&blocksY[i]+32>enemyY[i]) {if (turn==1){enemyturn[i]=0} else {enemyturn[i]=1}}
+else if (enemyX[i]>blocksX[i]&&blocksX[i]+32>enemyX[i]&&enemyY[i]>blocksY[i]-32&&blocksY[i]+32>enemyY[i]) {if (turn==1){enemyturn[i]=0} else {enemyturn[i]=1}}
+}
+	ctx.drawImage( mapchip, 192, 0, 32, 32, enemyX[i], enemyY[i], 32, 32 );
 	if (
 	y+hitboxY>enemyY[i]&&
 	y<enemyY[i]&&
