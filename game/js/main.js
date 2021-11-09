@@ -347,7 +347,7 @@ else if (x>spikeX[i]&&spikeX[i]+hitboxX>x&&y>spikeY[i]-hitboxX&&spikeY[i]+hitbox
 	
 /*enemy*/
 for (var i=0;i<enemyY.length;i++) {
-ctx.drawImage( mapchip, 192, 0, 32, 32, enemyX[i], enemyY[i], 32, 32 );
+ctx.drawImage( mapchip, 192, 0, 32, 32, enemyX[0], enemyY[0], 32, 32 );
 	if (
 	y+hitboxY>enemyY[i]&&
 	y<enemyY[i]&&
@@ -365,7 +365,7 @@ for (var i=0;i<enemyX.length;i++) {
 if (x>enemyX[i]-hitboxX&&enemyX[i]>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
 else if (x>enemyX[i]&&enemyX[i]+hitboxX>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
 }
-enemyX[i]++
+enemyX[0]++
 /*enemy-------------------------------------------------------------------------------------------*/
 
 /*bridge*/
