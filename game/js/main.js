@@ -347,7 +347,7 @@ else if (x>spikeX[i]&&spikeX[i]+hitboxX>x&&y>spikeY[i]-hitboxX&&spikeY[i]+hitbox
 	
 /*enemy*/
 for (var i=0;i<enemyY.length;i++) {
-ctx.drawImage( mapchip, 192, 0, 32, 32, 32*enemyX[0], 32*enemyY[0], 32, 32 );
+ctx.drawImage( mapchip, 192, 0, 32, 32, enemyX[0], enemyY[0], 32, 32 );
 	if (
 	y+hitboxY>enemyY[i]&&
 	y<enemyY[i]&&
