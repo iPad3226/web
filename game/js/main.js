@@ -365,6 +365,7 @@ for (var i=0;i<enemyX.length;i++) {
 if (x>enemyX[i]-hitboxX&&enemyX[i]>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
 else if (x>enemyX[i]&&enemyX[i]+hitboxX>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
 }
+enemyX[0]++
 /*enemy-------------------------------------------------------------------------------------------*/
 
 /*bridge*/
