@@ -363,8 +363,8 @@ ctx.drawImage( mapchip, 192, 0, 32, 32, enemyX[i], enemyY[i], 32, 32 );
 	) {game=0}
 if (x>enemyX[i]-hitboxX&&enemyX[i]>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
 else if (x>enemyX[i]&&enemyX[i]+hitboxX>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
-if (ejump) {enemyY=enemyY+evy;evy=evy+0.05}
-if (turn==1) {enemyX=enemyX+espeed} else if (turn==0) {enemyX=enemyX-espeed}
+if (ejump) {enemyY[i]=enemyY[i]+evy;evy=evy+0.05}
+if (turn==1) {enemyX[i]=enemyX[i]+espeed} else if (turn==0) {enemyX[i]=enemyX[i]-espeed}
 }
 /*enemy-------------------------------------------------------------------------------------------*/
 
