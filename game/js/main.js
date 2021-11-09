@@ -360,12 +360,10 @@ ctx.drawImage( mapchip, 192, 0, 32, 32, enemyX[i], enemyY[i], 32, 32 );
 	x<enemyX[i]+hitboxX-2&&
 	x>enemyX[i]-hitboxX+2
 	) {game=0}
-}
-for (var i=0;i<enemyX.length;i++) {
 if (x>enemyX[i]-hitboxX&&enemyX[i]>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
 else if (x>enemyX[i]&&enemyX[i]+hitboxX>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
-}
 enemyX[i]++
+}
 /*enemy-------------------------------------------------------------------------------------------*/
 
 /*bridge*/
