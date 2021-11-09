@@ -210,8 +210,8 @@ ctx.drawImage(enemy2,ex2,ey2,32,32);
 /*BLOCK*/
 var ladderX = new Array();//
 var ladderY = new Array();//
-var enemyX = new Array();//
-var enemyY = new Array();//
+if (once) {var enemyX = new Array()};//
+if (once) {var enemyY = new Array()};//
 var bridgeX = new Array();//
 var bridgeY = new Array();//
 var spikeX = new Array();//
@@ -338,8 +338,6 @@ for (var i=0;i<spikeY.length;i++) {
 	x<spikeX[i]+hitboxX-2&&
 	x>spikeX[i]-hitboxX+2
 	) {game=0}
-}
-for (var i=0;i<spikeX.length;i++) {
 if (x>spikeX[i]-hitboxX&&spikeX[i]>x&&y>spikeY[i]-hitboxX&&spikeY[i]+hitboxX>y) {game=0}
 else if (x>spikeX[i]&&spikeX[i]+hitboxX>x&&y>spikeY[i]-hitboxX&&spikeY[i]+hitboxX>y) {game=0}
 }
