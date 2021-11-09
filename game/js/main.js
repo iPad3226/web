@@ -363,8 +363,8 @@ for (var i=0;i<blocksY.length;i++) {
 	enemyX[i]<blocksX[i]+30&&
 	enemyX[i]>blocksX[i]-30
 	) {enemyY[i]=blocksY[i]+32;evy=0}
-if (enemyX[i]>blocksX[i]-32&&blocksX[i]>enemyX[i]&&enemyY[i]>blocksY[i]-32&&blocksY[i]+32>enemyY[i]) {if (turn==1){enemyturn[i]=false} else {enemyturn[i]=true}}
-else if (enemyX[i]>blocksX[i]&&blocksX[i]+32>enemyX[i]&&enemyY[i]>blocksY[i]-32&&blocksY[i]+32>enemyY[i]) {if (turn==1){enemyturn[i]=false} else {enemyturn[i]=true}}
+if (enemyX[i]>blocksX[i]-32&&blocksX[i]>enemyX[i]&&enemyY[i]>blocksY[i]-32&&blocksY[i]+32>enemyY[i]) {if (enemyturn[i]==true){enemyturn[i]=false} else {enemyturn[i]=true}}
+else if (enemyX[i]>blocksX[i]&&blocksX[i]+32>enemyX[i]&&enemyY[i]>blocksY[i]-32&&blocksY[i]+32>enemyY[i]) {if (enemyturn[i]==true){enemyturn[i]=false} else {enemyturn[i]=true}}
 }
 	ctx.drawImage( mapchip, 192, 0, 32, 32, enemyX[i], enemyY[i], 32, 32 );
 	if (
