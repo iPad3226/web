@@ -212,6 +212,7 @@ ctx.drawImage(enemy,ex,ey,32,32);
 ctx.drawImage(enemy2,ex2,ey2,32,32);
 
 /*BLOCK*/
+if (once) {enemyX = [];enemyY = [];}
 var ladderX = new Array();//
 var ladderY = new Array();//
 var bridgeX = new Array();//
