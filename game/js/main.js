@@ -261,7 +261,7 @@ for (var my=0; my<map.length; my++){for (var mx=0; mx<map[my].length; mx++){
 /*sandT*/ if (map[my][mx] === 29) {ctx.drawImage( mapchip, 224, 0, 32, 32, 32*mx, 32*my, 32, 32 );sandX.push(mx*32);sandY.push(my*32)}
 /*sandB*/ if (map[my][mx] === 30) {ctx.drawImage( mapchip, 192, 0, 32, 32, 32*mx, 32*my, 32, 32 );sandX.push(mx*32);sandY.push(my*32)}
 /*player*/	if (map[my][mx] === 10&&once&&spawn) {x=32*mx, y=32*my;cx=x;cy=y}
-/*enemy*/ 	if (map[my][mx] === 11&&once) {enemyX.length=0;enemyY.length=0;enemyX.push(mx*32);enemyY.push(my*32)}
+/*enemy*/ 	if (map[my][mx] === 11&&once) {enemyX.push(mx*32);enemyY.push(my*32)}
 /*enemy*/	if (map[my][mx] === 12&&once) {ex=32*mx, ey=32*my;}
 /*-cp-*/	if (map[my][mx] === 13&&!cp==true) {ctx.drawImage( mapchip, 64, 32, 32, 32, 32*mx, 32*my, 32, 32 );cpX.push(mx*32);cpY.push(my*32)}
 /*enemy2*/	if (map[my][mx] === 20&&once) {ex2=32*mx, ey2=32*my;}
