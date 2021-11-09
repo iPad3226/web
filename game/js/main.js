@@ -76,6 +76,7 @@ var enemyX = new Array();//
 var enemyY = new Array();//
 var enemyturn = new Array();
 var enemyjump = new Array();
+var enemyV = new Array();
 
 /*bg*/
 var background = new Image();
@@ -213,7 +214,7 @@ ctx.drawImage(enemy,ex,ey,32,32);
 ctx.drawImage(enemy2,ex2,ey2,32,32);
 
 /*BLOCK*/
-if (once) {enemyX = [];enemyY = [];enemyturn = [];enemyjump = [];}
+if (once) {enemyX = [];enemyY = [];enemyturn = [];enemyjump = [];enemyV = [];}
 var ladderX = new Array();//
 var ladderY = new Array();//
 var bridgeX = new Array();//
@@ -263,7 +264,7 @@ for (var my=0; my<map.length; my++){for (var mx=0; mx<map[my].length; mx++){
 /*sandT*/ if (map[my][mx] === 29) {ctx.drawImage( mapchip, 224, 0, 32, 32, 32*mx, 32*my, 32, 32 );sandX.push(mx*32);sandY.push(my*32)}
 /*sandB*/ if (map[my][mx] === 30) {ctx.drawImage( mapchip, 192, 0, 32, 32, 32*mx, 32*my, 32, 32 );sandX.push(mx*32);sandY.push(my*32)}
 /*player*/	if (map[my][mx] === 10&&once&&spawn) {x=32*mx, y=32*my;cx=x;cy=y}
-/*enemy*/ 	if (map[my][mx] === 11&&once) {enemyX.push(mx*32);enemyY.push(my*32);enemyturn.push(true);enemyjump.push(true)}
+/*enemy*/ 	if (map[my][mx] === 11&&once) {enemyX.push(mx*32);enemyY.push(my*32);enemyturn.push(true);enemyjump.push(true);enemyV.push(0)}
 /*enemy*/	if (map[my][mx] === 12&&once) {ex=32*mx, ey=32*my;}
 /*-cp-*/	if (map[my][mx] === 13&&!cp==true) {ctx.drawImage( mapchip, 64, 32, 32, 32, 32*mx, 32*my, 32, 32 );cpX.push(mx*32);cpY.push(my*32)}
 /*enemy2*/	if (map[my][mx] === 20&&once) {ex2=32*mx, ey2=32*my;}
@@ -356,13 +357,13 @@ for (var j=0;j<blocksY.length;j++) {
 	enemyY[i]<blocksY[j]&&
 	enemyX[i]<blocksX[j]+30&&
 	enemyX[i]>blocksX[j]-30
-	) {ey=blocksY[j]-32;enemyjump[i]=false;evy=0}
+	) {ey=blocksY[j]-32;enemyjump[i]=false;enemyV[i]=0}
 	else if (
 	enemyY[i]>blocksY[j]&&
 	enemyY[i]-32<blocksY[j]&&
 	enemyX[i]<blocksX[j]+30&&
 	enemyX[i]>blocksX[j]-30
-	) {enemyY[i]=blocksY[j]+32;evy=0}
+	) {enemyY[i]=blocksY[j]+32;enemyV[i]=0}
 if (enemyX[i]>blocksX[j]-32&&blocksX[j]>enemyX[i]&&enemyY[i]>blocksY[j]-32&&blocksY[j]+32>enemyY[i]) {if (enemyturn[i]==true){enemyturn[i]=false} else {enemyturn[i]=true}}
 else if (enemyX[i]>blocksX[j]&&blocksX[j]+32>enemyX[i]&&enemyY[i]>blocksY[j]-32&&blocksY[j]+32>enemyY[i]) {if (enemyturn[i]==true){enemyturn[i]=false} else {enemyturn[i]=true}}
 }
@@ -381,7 +382,7 @@ else if (enemyX[i]>blocksX[j]&&blocksX[j]+32>enemyX[i]&&enemyY[i]>blocksY[j]-32&
 	) {game=0}
 if (x>enemyX[i]-hitboxX&&enemyX[i]>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
 else if (x>enemyX[i]&&enemyX[i]+hitboxX>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
-if (enemyjump[i]) {enemyY[i]=enemyY[i]+evy;evy=evy+0.05}
+if (enemyjump[i]) {enemyY[i]=enemyY[i]+enemyV[i];enemyV[i]=enemyV[i]+0.05}
 if (enemyturn[i]) {enemyX[i]=enemyX[i]+espeed} else if (!enemyturn[i]) {enemyX[i]=enemyX[i]-espeed}
 }
 /*enemy-------------------------------------------------------------------------------------------*/
