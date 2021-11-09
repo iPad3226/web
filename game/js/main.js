@@ -350,21 +350,21 @@ else if (x>spikeX[i]&&spikeX[i]+hitboxX>x&&y>spikeY[i]-hitboxX&&spikeY[i]+hitbox
 /*enemy*/
 for (var i=0;i<enemyY.length;i++) {
 enemyjump[i]=true
-for (var i=0;i<blocksY.length;i++) {
+for (var j=0;j<blocksY.length;j++) {
 	if (
-	enemyY[i]+32.001>blocksY[i]&&
-	enemyY[i]<blocksY[i]&&
-	enemyX[i]<blocksX[i]+30&&
-	enemyX[i]>blocksX[i]-30
-	) {ey=blocksY[i]-32;enemyjump[i]=false;evy=0}
+	enemyY[i]+32.001>blocksY[j]&&
+	enemyY[i]<blocksY[j]&&
+	enemyX[i]<blocksX[j]+30&&
+	enemyX[i]>blocksX[j]-30
+	) {ey=blocksY[j]-32;enemyjump[i]=false;evy=0}
 	else if (
-	enemyY[i]>blocksY[i]&&
-	enemyY[i]-32<blocksY[i]&&
-	enemyX[i]<blocksX[i]+30&&
-	enemyX[i]>blocksX[i]-30
-	) {enemyY[i]=blocksY[i]+32;evy=0}
-if (enemyX[i]>blocksX[i]-32&&blocksX[i]>enemyX[i]&&enemyY[i]>blocksY[i]-32&&blocksY[i]+32>enemyY[i]) {if (enemyturn[i]==true){enemyturn[i]=false} else {enemyturn[i]=true}}
-else if (enemyX[i]>blocksX[i]&&blocksX[i]+32>enemyX[i]&&enemyY[i]>blocksY[i]-32&&blocksY[i]+32>enemyY[i]) {if (enemyturn[i]==true){enemyturn[i]=false} else {enemyturn[i]=true}}
+	enemyY[i]>blocksY[j]&&
+	enemyY[i]-32<blocksY[j]&&
+	enemyX[i]<blocksX[j]+30&&
+	enemyX[i]>blocksX[j]-30
+	) {enemyY[i]=blocksY[j]+32;evy=0}
+if (enemyX[i]>blocksX[j]-32&&blocksX[j]>enemyX[i]&&enemyY[i]>blocksY[j]-32&&blocksY[j]+32>enemyY[i]) {if (enemyturn[i]==true){enemyturn[i]=false} else {enemyturn[i]=true}}
+else if (enemyX[i]>blocksX[j]&&blocksX[j]+32>enemyX[i]&&enemyY[i]>blocksY[j]-32&&blocksY[j]+32>enemyY[i]) {if (enemyturn[i]==true){enemyturn[i]=false} else {enemyturn[i]=true}}
 }
 	ctx.drawImage( mapchip, 192, 0, 32, 32, enemyX[i], enemyY[i], 32, 32 );
 	if (
