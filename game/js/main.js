@@ -74,7 +74,8 @@ var ces2 = espeed2;
 
 var enemyX = new Array();//
 var enemyY = new Array();//
-
+var enemyturn = new Array();
+var enemyjump = new Array();
 
 /*bg*/
 var background = new Image();
@@ -212,7 +213,7 @@ ctx.drawImage(enemy,ex,ey,32,32);
 ctx.drawImage(enemy2,ex2,ey2,32,32);
 
 /*BLOCK*/
-if (once) {enemyX = [];enemyY = [];}
+if (once) {enemyX = [];enemyY = [];enemyturn = [];enemyjump = [];}
 var ladderX = new Array();//
 var ladderY = new Array();//
 var bridgeX = new Array();//
@@ -262,7 +263,7 @@ for (var my=0; my<map.length; my++){for (var mx=0; mx<map[my].length; mx++){
 /*sandT*/ if (map[my][mx] === 29) {ctx.drawImage( mapchip, 224, 0, 32, 32, 32*mx, 32*my, 32, 32 );sandX.push(mx*32);sandY.push(my*32)}
 /*sandB*/ if (map[my][mx] === 30) {ctx.drawImage( mapchip, 192, 0, 32, 32, 32*mx, 32*my, 32, 32 );sandX.push(mx*32);sandY.push(my*32)}
 /*player*/	if (map[my][mx] === 10&&once&&spawn) {x=32*mx, y=32*my;cx=x;cy=y}
-/*enemy*/ 	if (map[my][mx] === 11&&once) {enemyX.push(mx*32);enemyY.push(my*32)}
+/*enemy*/ 	if (map[my][mx] === 11&&once) {enemyX.push(mx*32);enemyY.push(my*32);enemyturn.push(true);enemyjump.push(true)}
 /*enemy*/	if (map[my][mx] === 12&&once) {ex=32*mx, ey=32*my;}
 /*-cp-*/	if (map[my][mx] === 13&&!cp==true) {ctx.drawImage( mapchip, 64, 32, 32, 32, 32*mx, 32*my, 32, 32 );cpX.push(mx*32);cpY.push(my*32)}
 /*enemy2*/	if (map[my][mx] === 20&&once) {ex2=32*mx, ey2=32*my;}
@@ -363,8 +364,8 @@ ctx.drawImage( mapchip, 192, 0, 32, 32, enemyX[i], enemyY[i], 32, 32 );
 	) {game=0}
 if (x>enemyX[i]-hitboxX&&enemyX[i]>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
 else if (x>enemyX[i]&&enemyX[i]+hitboxX>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
-if (ejump) {enemyY[i]=enemyY[i]+evy;evy=evy+0.05}
-if (turn==1) {enemyX[i]=enemyX[i]+espeed} else if (turn==0) {enemyX[i]=enemyX[i]-espeed}
+if (enemyjump[i]) {enemyY[i]=enemyY[i]+evy;evy=evy+0.05}
+if (enemyturn[i]) {enemyX[i]=enemyX[i]+espeed} else if (!enemyturn[i]) {enemyX[i]=enemyX[i]-espeed}
 }
 /*enemy-------------------------------------------------------------------------------------------*/
 
