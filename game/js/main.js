@@ -102,7 +102,7 @@ map = [
 	[00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00],//02
 	[22,21,24,23,26,25,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00],//03
 	[00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00],//04
-	[00,00,00,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00],//05
+	[00,00,00,11,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00],//05
 	[00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00],//06
 	[08,00,00,00,00,00,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,22,00,00,00,00,00],//07
 	[05,05,05,05,65,05,05,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,22,00,00,00,00,00],//08
@@ -210,6 +210,8 @@ ctx.drawImage(enemy2,ex2,ey2,32,32);
 /*BLOCK*/
 var ladderX = new Array();//
 var ladderY = new Array();//
+var enemyX = new Array();//
+var enemyY = new Array();//
 var bridgeX = new Array();//
 var bridgeY = new Array();//
 var spikeX = new Array();//
@@ -257,6 +259,7 @@ for (var my=0; my<map.length; my++){for (var mx=0; mx<map[my].length; mx++){
 /*sandT*/ if (map[my][mx] === 29) {ctx.drawImage( mapchip, 224, 0, 32, 32, 32*mx, 32*my, 32, 32 );sandX.push(mx*32);sandY.push(my*32)}
 /*sandB*/ if (map[my][mx] === 30) {ctx.drawImage( mapchip, 192, 0, 32, 32, 32*mx, 32*my, 32, 32 );sandX.push(mx*32);sandY.push(my*32)}
 /*player*/	if (map[my][mx] === 10&&once&&spawn) {x=32*mx, y=32*my;cx=x;cy=y}
+/*enemy*/ 	if (map[my][mx] === 11) {ctx.drawImage( mapchip, 192, 0, 32, 32, 32*mx, 32*my, 32, 32 );enemyX.push(mx*32);enemyY.push(my*32)}
 /*enemy*/	if (map[my][mx] === 12&&once) {ex=32*mx, ey=32*my;}
 /*-cp-*/	if (map[my][mx] === 13&&!cp==true) {ctx.drawImage( mapchip, 64, 32, 32, 32, 32*mx, 32*my, 32, 32 );cpX.push(mx*32);cpY.push(my*32)}
 /*enemy2*/	if (map[my][mx] === 20&&once) {ex2=32*mx, ey2=32*my;}
@@ -341,6 +344,27 @@ if (x>spikeX[i]-hitboxX&&spikeX[i]>x&&y>spikeY[i]-hitboxX&&spikeY[i]+hitboxX>y) 
 else if (x>spikeX[i]&&spikeX[i]+hitboxX>x&&y>spikeY[i]-hitboxX&&spikeY[i]+hitboxX>y) {game=0}
 }
 /*spike-------------------------------------------------------------------------------------------*/
+	
+/*enemy*/
+for (var i=0;i<enemyY.length;i++) {
+	if (
+	y+hitboxY>enemyY[i]&&
+	y<enemyY[i]&&
+	x<enemyX[i]+hitboxX-2&&
+	x>enemyX[i]-hitboxX+2
+	) {game=0}
+	else if (
+	y>enemyY[i]&&
+	y-hitboxY<enemyY[i]&&
+	x<enemyX[i]+hitboxX-2&&
+	x>enemyX[i]-hitboxX+2
+	) {game=0}
+}
+for (var i=0;i<enemyX.length;i++) {
+if (x>enemyX[i]-hitboxX&&enemyX[i]>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
+else if (x>enemyX[i]&&enemyX[i]+hitboxX>x&&y>enemyY[i]-hitboxX&&enemyY[i]+hitboxX>y) {game=0}
+}
+/*enemy-------------------------------------------------------------------------------------------*/
 
 /*bridge*/
 for (var i=0;i<bridgeY.length;i++) {
@@ -359,7 +383,6 @@ for (var i=0;i<bridgeY.length;i++) {
 	) {y=bridgeY[i]-hitboxY;jump=false;vy=0}
 }
 /*bridge-------------------------------------------------------------------------------------------*/
-
 
 /*ladder*/
 for (var i=0;i<ladderY.length;i++) {
