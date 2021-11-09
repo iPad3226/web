@@ -72,6 +72,10 @@ var espeed2 = 0.7;
 var ces2 = espeed2;
 /*enemy2*/
 
+var enemyX = new Array();//
+var enemyY = new Array();//
+
+
 /*bg*/
 var background = new Image();
 background.src = "./obj/background.png";
@@ -210,8 +214,6 @@ ctx.drawImage(enemy2,ex2,ey2,32,32);
 /*BLOCK*/
 var ladderX = new Array();//
 var ladderY = new Array();//
-if (once) {var enemyX = new Array()};//
-if (once) {var enemyY = new Array()};//
 var bridgeX = new Array();//
 var bridgeY = new Array();//
 var spikeX = new Array();//
