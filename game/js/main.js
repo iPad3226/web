@@ -272,8 +272,8 @@ for (var my=0; my<map.length; my++){for (var mx=0; mx<map[my].length; mx++){
 /*BLOCK*/
 
 
-if (inkey[39]&&inkey[16]) {x=x+xspeed+2;playerturn=0} else if (inkey[39]) {x=x+xspeed;playerturn=0}
-if (inkey[37]&&inkey[16]) {x=x-xspeed-2;playerturn=1} else if (inkey[37]) {x=x-xspeed;playerturn=1}
+/*if (inkey[39]&&inkey[16]) {x=x+xspeed+2;playerturn=0} else */if (inkey[39]) {x=x+xspeed;playerturn=0}
+/*if (inkey[37]&&inkey[16]) {x=x-xspeed-2;playerturn=1} else */if (inkey[37]) {x=x-xspeed;playerturn=1}
 if (inkey[32]&&!jump) {vy=-0.5;jump=true;isjump=true}
 if (isjump&&inkey[32]&&vy>-(jumpheight)) {vy=vy-0.20} else {isjump=false}
 jump=true
