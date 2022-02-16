@@ -1,9 +1,6 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 
-const inkey = [];
-window.addEventListener("keydown",function(e){inkey[e.keyCode] = true});
-window.addEventListener("keyup",function(e){inkey[e.keyCode] = false});
 
 function moveplayer(NX,NY,P){
     let A = player.x+player.w[0]
