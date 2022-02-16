@@ -1,9 +1,5 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
-const inkey = [];
-window.addEventListener("keydown",function(e){inkey[e.keyCode] = true});
-window.addEventListener("keyup",function(e){inkey[e.keyCode] = false});
-console.log("Hello,World!!")
 
 function drawimg(img,x,y,C=true,T=0){
     if(!C){
